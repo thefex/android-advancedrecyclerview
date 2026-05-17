@@ -150,19 +150,18 @@ public class AddRemoveExpandableExampleFragment
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_add_group_bottom_2:
-                mAdapter.addGroupItemsBottom(2);
-                return true;
-            case R.id.menu_remove_group_bottom_2:
-                mAdapter.removeGroupItemsBottom(2);
-                return true;
-            case R.id.menu_clear_groups:
-                mAdapter.clearGroupItems();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == R.id.menu_add_group_bottom_2) {
+            mAdapter.addGroupItemsBottom(2);
+            return true;
+        } else if (id == R.id.menu_remove_group_bottom_2) {
+            mAdapter.removeGroupItemsBottom(2);
+            return true;
+        } else if (id == R.id.menu_clear_groups) {
+            mAdapter.clearGroupItems();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

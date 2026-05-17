@@ -69,19 +69,15 @@ public class AddRemoveHeaderFooterExampleActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_add_header:
-                mHeaderFooterAdapter.addHeaderItem();
-                break;
-            case R.id.menu_remove_header:
-                mHeaderFooterAdapter.removeHeaderItem();
-                break;
-            case R.id.menu_add_footer:
-                mHeaderFooterAdapter.addFooterItem();
-                break;
-            case R.id.menu_remove_footer:
-                mHeaderFooterAdapter.removeFooterItem();
-                break;
+        int id = item.getItemId();
+        if (id == R.id.menu_add_header) {
+            mHeaderFooterAdapter.addHeaderItem();
+        } else if (id == R.id.menu_remove_header) {
+            mHeaderFooterAdapter.removeHeaderItem();
+        } else if (id == R.id.menu_add_footer) {
+            mHeaderFooterAdapter.addFooterItem();
+        } else if (id == R.id.menu_remove_footer) {
+            mHeaderFooterAdapter.removeFooterItem();
         }
         return true;
     }

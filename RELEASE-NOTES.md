@@ -1,3 +1,15 @@
+## 1.4.0
+[Fork changes]
+- Version aligned with `androidx.recyclerview:recyclerview:1.4.0`
+- Updated Gradle wrapper to 8.9 and Android Gradle Plugin to 8.7.3
+- Updated compileSdk and targetSdk to 35, minSdk to 21
+- Replaced deprecated jCenter repository with mavenCentral
+- Removed Maven publish (this fork is not published to Maven)
+- Removed `com.h6ah4i.android.tablayouthelper` dependency from example app
+- Updated all AndroidX dependencies to current versions
+
+---
+
 ## 1.0.0
 [Breaking changes]
 - Migrated to AndroidX

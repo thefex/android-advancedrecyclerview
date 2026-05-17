@@ -20,7 +20,6 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.h6ah4i.android.example.advrecyclerview.R;
-import com.h6ah4i.android.tablayouthelper.TabLayoutHelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -39,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         pager.setAdapter(new LauncherPagerAdapter(getSupportFragmentManager()));
 
-        TabLayoutHelper tabLayoutHelper = new TabLayoutHelper(tabLayout, pager);
-        tabLayoutHelper.setAutoAdjustTabModeEnabled(true);
+        tabLayout.setupWithViewPager(pager);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

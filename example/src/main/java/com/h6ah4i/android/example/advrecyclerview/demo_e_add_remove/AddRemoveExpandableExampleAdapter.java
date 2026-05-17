@@ -228,58 +228,44 @@ class AddRemoveExpandableExampleAdapter
         int groupPosition = RecyclerViewExpandableItemManager.getPackedPositionGroup(expandablePosition);
         int childPosition = RecyclerViewExpandableItemManager.getPackedPositionChild(expandablePosition);
 
-        switch (v.getId()) {
-            // common events
-            case R.id.container:
-                if (childPosition == RecyclerView.NO_POSITION) {
-                    handleOnClickGroupItemContainerView(groupPosition);
-                } else {
-                    handleOnClickChildItemContainerView(groupPosition, childPosition);
-                }
-                break;
-            // group item events
-            case R.id.button_add_child_top:
-                handleOnClickGroupItemAddChildTopButton(groupPosition);
-                break;
-            case R.id.button_add_child_bottom:
-                handleOnClickGroupItemAddChildBottomButton(groupPosition);
-                break;
-            case R.id.button_add_child_bottom_2:
-                handleOnClickGroupItemAddChild2BottomButton(groupPosition);
-                break;
-            case R.id.button_remove_child_top:
-                handleOnClickGroupItemRemoveChildTopButton(groupPosition);
-                break;
-            case R.id.button_remove_child_bottom:
-                handleOnClickGroupItemRemoveChildBottomButton(groupPosition);
-                break;
-            case R.id.button_remove_child_bottom_2:
-                handleOnClickGroupItemRemoveChild2BottomButton(groupPosition);
-                break;
-            case R.id.button_add_group_above:
-                handleOnClickGroupItemAddAboveButton(groupPosition);
-                break;
-            case R.id.button_add_group_below:
-                handleOnClickGroupItemAddBelowButton(groupPosition);
-                break;
-            case R.id.button_remove_group:
-                handleOnClickGroupItemRemoveButton(groupPosition);
-                break;
-            case R.id.button_clear_children:
-                handleOnClickGroupItemClearChildrenButton(groupPosition);
-                break;
-            // child item events
-            case R.id.button_add_child_above:
-                handleOnClickChildItemAddAboveButton(groupPosition, childPosition);
-                break;
-            case R.id.button_add_child_below:
-                handleOnClickChildItemAddBelowButton(groupPosition, childPosition);
-                break;
-            case R.id.button_remove_child:
-                handleOnClickChildItemRemoveButton(groupPosition, childPosition);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected click event");
+        int vid = v.getId();
+        // common events
+        if (vid == R.id.container) {
+            if (childPosition == RecyclerView.NO_POSITION) {
+                handleOnClickGroupItemContainerView(groupPosition);
+            } else {
+                handleOnClickChildItemContainerView(groupPosition, childPosition);
+            }
+        // group item events
+        } else if (vid == R.id.button_add_child_top) {
+            handleOnClickGroupItemAddChildTopButton(groupPosition);
+        } else if (vid == R.id.button_add_child_bottom) {
+            handleOnClickGroupItemAddChildBottomButton(groupPosition);
+        } else if (vid == R.id.button_add_child_bottom_2) {
+            handleOnClickGroupItemAddChild2BottomButton(groupPosition);
+        } else if (vid == R.id.button_remove_child_top) {
+            handleOnClickGroupItemRemoveChildTopButton(groupPosition);
+        } else if (vid == R.id.button_remove_child_bottom) {
+            handleOnClickGroupItemRemoveChildBottomButton(groupPosition);
+        } else if (vid == R.id.button_remove_child_bottom_2) {
+            handleOnClickGroupItemRemoveChild2BottomButton(groupPosition);
+        } else if (vid == R.id.button_add_group_above) {
+            handleOnClickGroupItemAddAboveButton(groupPosition);
+        } else if (vid == R.id.button_add_group_below) {
+            handleOnClickGroupItemAddBelowButton(groupPosition);
+        } else if (vid == R.id.button_remove_group) {
+            handleOnClickGroupItemRemoveButton(groupPosition);
+        } else if (vid == R.id.button_clear_children) {
+            handleOnClickGroupItemClearChildrenButton(groupPosition);
+        // child item events
+        } else if (vid == R.id.button_add_child_above) {
+            handleOnClickChildItemAddAboveButton(groupPosition, childPosition);
+        } else if (vid == R.id.button_add_child_below) {
+            handleOnClickChildItemAddBelowButton(groupPosition, childPosition);
+        } else if (vid == R.id.button_remove_child) {
+            handleOnClickChildItemRemoveButton(groupPosition, childPosition);
+        } else {
+            throw new IllegalStateException("Unexpected click event");
         }
     }
 
