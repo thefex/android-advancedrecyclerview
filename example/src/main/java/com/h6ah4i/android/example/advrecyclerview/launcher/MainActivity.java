@@ -17,7 +17,7 @@
 package com.h6ah4i.android.example.advrecyclerview.launcher;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.h6ah4i.android.example.advrecyclerview.R;
 

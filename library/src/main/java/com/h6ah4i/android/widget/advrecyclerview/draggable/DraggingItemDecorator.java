@@ -20,8 +20,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.NinePatchDrawable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -203,7 +203,7 @@ class DraggingItemDecorator extends BaseDraggableItemDecorator {
             shadow.draw(canvas);
         }
 
-        final int savedCount = canvas.save(Canvas.CLIP_SAVE_FLAG | Canvas.MATRIX_SAVE_FLAG);
+        final int savedCount = canvas.save();
         // NOTE: Explicitly set clipping rect. This is required on Gingerbread.
         canvas.clipRect(mShadowPadding.left, mShadowPadding.top, width - mShadowPadding.right, height - mShadowPadding.bottom);
         canvas.translate(mShadowPadding.left, mShadowPadding.top);

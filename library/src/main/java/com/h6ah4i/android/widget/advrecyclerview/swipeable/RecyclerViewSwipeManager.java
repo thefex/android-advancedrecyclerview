@@ -18,9 +18,9 @@ package com.h6ah4i.android.widget.advrecyclerview.swipeable;
 
 import android.graphics.Rect;
 import android.os.Build;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;

@@ -16,7 +16,7 @@
 
 package com.h6ah4i.android.example.advrecyclerview.demo_ed_with_section;
 
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

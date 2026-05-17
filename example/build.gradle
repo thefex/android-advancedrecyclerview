@@ -21,12 +21,13 @@ apply from: '../common/android-set-common-properties.gradle'
 apply from: '../common/android-signing-utils.gradle'
 
 android {
+    namespace "com.h6ah4i.android.example.advrecyclerview"
     defaultConfig {
         applicationId "com.h6ah4i.android.example.advrecyclerview"
         minSdk 21
         targetSdk 35
-        versionCode 9
-        versionName "0.7.4"
+        versionCode 10
+        versionName "1.4.0"
     }
 
     signingConfigs {
@@ -52,4 +53,6 @@ dependencies {
     implementation project(':library')
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.fragment:fragment:1.8.5'
+    implementation 'com.google.android.material:material:1.12.0'
 }

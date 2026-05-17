@@ -16,7 +16,7 @@
 
 package com.h6ah4i.android.widget.advrecyclerview.animator.impl;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 
 import com.h6ah4i.android.widget.advrecyclerview.animator.BaseItemAnimator;
@@ -43,7 +43,7 @@ public abstract class ItemAddAnimationManager extends BaseItemAnimationManager<A
         if (debugLogEnabled()) {
             Log.d(TAG, "dispatchAddStarting(" + item + ")");
         }
-        mItemAnimator.dispatchAddStarting(item);
+        mItemAnimator.dispatchAnimationStarted(item);
     }
 
     @Override
@@ -51,7 +51,7 @@ public abstract class ItemAddAnimationManager extends BaseItemAnimationManager<A
         if (debugLogEnabled()) {
             Log.d(TAG, "dispatchAddFinished(" + item + ")");
         }
-        mItemAnimator.dispatchAddFinished(item);
+        mItemAnimator.dispatchAnimationFinished(item);
     }
 
     @Override

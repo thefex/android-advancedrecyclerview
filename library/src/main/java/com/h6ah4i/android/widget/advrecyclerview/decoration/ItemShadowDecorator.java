@@ -21,8 +21,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 /**
@@ -50,7 +50,7 @@ public class ItemShadowDecorator extends RecyclerView.ItemDecoration {
             return;
         }
 
-        int savedCount = c.save(Canvas.CLIP_SAVE_FLAG);
+        int savedCount = c.save();
 
         c.clipRect(
                 parent.getLeft() + Math.max(0, parent.getPaddingLeft() - mShadowPadding.left),

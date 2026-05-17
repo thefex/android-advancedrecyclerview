@@ -1,3 +1,12 @@
+## 1.4.0 *(current)*
+- Migrated to AndroidX (`androidx.recyclerview:recyclerview:1.4.0`)
+- Upgraded Gradle wrapper to 8.9 and Android Gradle Plugin to 8.6.1
+- Replaced deprecated `jcenter()` with `google()` + `mavenCentral()`
+- Replaced deprecated `maven` + `uploadArchives` with `maven-publish` plugin
+- Updated `compileSdk` to 35, `minSdk` to 14 (library) / 21 (example app)
+- Java source/target compatibility updated to 1.8
+- Dropped unused dependencies (`com.android.support:design`, `vector-compat`)
+
 ## 0.7.4
 - Fixed issue #75 (Error In -->Expandable(Add/Remove Items))
 

@@ -19,8 +19,8 @@ package com.h6ah4i.android.widget.advrecyclerview.decoration;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 /**
@@ -53,7 +53,7 @@ public class SimpleListDividerDecorator extends RecyclerView.ItemDecoration {
             return;
         }
 
-        int savedCount = c.save(Canvas.CLIP_SAVE_FLAG);
+        int savedCount = c.save();
 
         c.clipRect(
                 parent.getLeft() + parent.getPaddingLeft(),

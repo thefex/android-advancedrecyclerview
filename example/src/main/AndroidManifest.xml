@@ -15,7 +15,6 @@
        limitations under the License.
 -->
 <manifest
-    package="com.h6ah4i.android.example.advrecyclerview"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -29,7 +28,8 @@
 
         <activity
             android:name=".launcher.MainActivity"
-            android:label="@string/activity_title_launcher">
+            android:label="@string/activity_title_launcher"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

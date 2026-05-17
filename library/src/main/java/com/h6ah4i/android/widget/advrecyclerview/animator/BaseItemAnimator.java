@@ -16,9 +16,10 @@
 
 package com.h6ah4i.android.widget.advrecyclerview.animator;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
-public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
+public abstract class BaseItemAnimator extends SimpleItemAnimator {
     private ItemAnimatorListener mListener;
 
     /**
@@ -48,12 +49,10 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         mListener = listener;
     }
 
-    @Override
     public final void onAddStarting(RecyclerView.ViewHolder item) {
         onAddStartingImpl(item);
     }
 
-    @Override
     public final void onAddFinished(RecyclerView.ViewHolder item) {
         onAddFinishedImpl(item);
 
@@ -62,12 +61,10 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         }
     }
 
-    @Override
     public final void onChangeStarting(RecyclerView.ViewHolder item, boolean oldItem) {
         onChangeStartingItem(item, oldItem);
     }
 
-    @Override
     public final void onChangeFinished(RecyclerView.ViewHolder item, boolean oldItem) {
         onChangeFinishedImpl(item, oldItem);
 
@@ -76,12 +73,10 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         }
     }
 
-    @Override
     public final void onMoveStarting(RecyclerView.ViewHolder item) {
         onMoveStartingImpl(item);
     }
 
-    @Override
     public final void onMoveFinished(RecyclerView.ViewHolder item) {
         onMoveFinishedImpl(item);
 
@@ -90,12 +85,10 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         }
     }
 
-    @Override
     public final void onRemoveStarting(RecyclerView.ViewHolder item) {
         onRemoveStartingImpl(item);
     }
 
-    @Override
     public final void onRemoveFinished(RecyclerView.ViewHolder item) {
         onRemoveFinishedImpl(item);
 
