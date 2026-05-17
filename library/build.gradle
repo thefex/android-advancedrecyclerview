@@ -33,8 +33,6 @@ android {
         dataProps.load(project.file('./library-data.properties').newDataInputStream())
 
         //noinspection GroovyAssignabilityCheck
-        versionCode dataProps.VERSION_CODE.toInteger()
-        versionName dataProps.VERSION_NAME
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }

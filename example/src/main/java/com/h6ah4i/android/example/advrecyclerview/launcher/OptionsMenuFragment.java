@@ -44,10 +44,10 @@ public class OptionsMenuFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.oss_license:
-                launchAboutActivity();
-                return true;
+        int id = item.getItemId();
+        if (id == R.id.oss_license) {
+            launchAboutActivity();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
