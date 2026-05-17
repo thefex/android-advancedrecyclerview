@@ -1,22 +1,18 @@
 Advanced RecyclerView
 ===============
 
-This RecyclerView extension library provides Google's Inbox app like swiping, Play Music app like drag-and-drop sorting and expandable item features. Works on API level 14 or later.
-
-**Documentation site**: https://advancedrecyclerview.h6ah4i.com/
-
-
-[ ![Download](https://api.bintray.com/packages/h6ah4i/maven/android-advancedrecyclerview/images/download.svg) ](https://bintray.com/h6ah4i/maven/android-advancedrecyclerview/_latestVersion)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Advanced%20RecyclerView-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1432)
+> **Fork Notice**
+>
+> This is a maintained fork of [h6ah4i/android-advancedrecyclerview](https://github.com/h6ah4i/android-advancedrecyclerview).
+> **This fork is not published to Maven** and is solely intended to be consumed as an Android library
+> in [.NET Android (Xamarin.Android) bindings](https://learn.microsoft.com/en-us/previous-versions/xamarin/android/platform/binding-java-library/) projects.
+> If you need a Maven-published artifact, refer to the original repository.
 
 ---
 
-### Download the example app
+This RecyclerView extension library provides Google's Inbox app like swiping, Play Music app like drag-and-drop sorting and expandable item features. Works on API level 21 or later.
 
-<a href="https://play.google.com/store/apps/details?id=com.h6ah4i.android.example.advrecyclerview">
-<img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="165" height="64" />
-</a>
-
+---
 
 ### Demonstration video on YouTube
 
@@ -29,43 +25,44 @@ This RecyclerView extension library provides Google's Inbox app like swiping, Pl
 Target platforms
 ---
 
-- API level 14 or later
+- API level 21 or later
 
 
 Latest version
 ---
 
-- Version 1.0.0  (December 16, 2018)   ([RELEASE NOTES](./RELEASE-NOTES.md))
+- Version 1.4.0  ([RELEASE NOTES](./RELEASE-NOTES.md))
 
 
-**Recent Breaking Change Info**
+Versioning
+---
 
-- **v1.0.0:**
-  - Migrated to AndroidX (Use **v0.11.0** instead if your project uses support libraries)
-  - `BaseWrapperAdapter`
-  - Removed some deprecated features
-    - `SwipeableItemConstants.REACTION_CAN_SWIPE_BOTH`
-    - `SwipeableItemConstants.REACTION_CAN_NOT_SWIPE_BOTH`
-    - `SwipeableItemConstants.REACTION_CAN_NOT_SWIPE_BOTH_WITH_RUBBER_BAND_EFFECT`
-  - New `DraggableItemState getDragState()` method added to the `DraggableItemViewHolder` interface
-  - New `SwipeableItemState getSwipeState()` method added to the `SwipeableItemViewHolder` interface
-  - New `ExpandableItemState getExpandState()` method added to the `ExpandableItemViewHolder` interface
+Library versions are aligned with the **androidx.recyclerview** version they are built against.
+For example, version `1.4.0` of this library is built with `androidx.recyclerview:recyclerview:1.4.0`.
 
-:point_right: [Migration guide from v0.11.0 to v1.0.0](https://advancedrecyclerview.h6ah4i.com/migration/)
+| Library version | androidx.recyclerview version |
+|-----------------|-------------------------------|
+| 1.4.0           | 1.4.0                         |
+
+See [RELEASE-NOTES.md](./RELEASE-NOTES.md) for the full changelog.
 
 
 Getting started
 ---
 
-This library is published on jCenter. Just add these lines to `build.gradle`.
+This library is consumed directly from source as part of a .NET Android (Xamarin.Android) bindings project.
+Clone or add this repository as a Git submodule and reference the `:library` module from your project.
 
 ```gradle
+// settings.gradle
+include ':advancedrecyclerview'
+project(':advancedrecyclerview').projectDir = new File('../android-advancedrecyclerview/library')
+
+// app/build.gradle
 dependencies {
-    implementation 'com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:1.0.0'
+    implementation project(':advancedrecyclerview')
 }
 ```
-
-Please check the [Getting Started section on the official documentation site](https://advancedrecyclerview.h6ah4i.com/getting-started/) for more details.
 
 ---
 
