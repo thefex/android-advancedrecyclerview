@@ -1,51 +1,62 @@
 Advanced RecyclerView
 ===============
 
-This RecyclerView extension library provides Google's Inbox app like swiping, Play Music app like drag-and-drop sorting and expandable item features. Works on API level 9 or later.
+> **Fork notice:** This is a fork of [h6ah4i/android-advancedrecyclerview](https://github.com/h6ah4i/android-advancedrecyclerview).
+> It is **not distributed via Maven**. The library must be built manually.
+> Its primary purpose is to serve as the native Android dependency for the
+> [Xamarin.Bindings.AdvancedRecyclerView](https://github.com/thefex/Xamarin.Bindings.AdvancedRecyclerView) (.NET Android) project.
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Advanced%20RecyclerView-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1432)
+This RecyclerView extension library provides Google's Inbox app like swiping, Play Music app like drag-and-drop sorting and expandable item features.
 
 ---
 
-### Download the example app
+Changelog
+---
 
-<a href="https://play.google.com/store/apps/details?id=com.h6ah4i.android.example.advrecyclerview">
-<img alt="Get it on Google Play"
-src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
-</a>
+### 1.4.0 *(current)*
+- Migrated to AndroidX (`androidx.recyclerview:recyclerview:1.4.0`)
+- Upgraded Gradle wrapper to 8.9 and Android Gradle Plugin to 8.6.1
+- Replaced deprecated `jcenter()` with `google()` + `mavenCentral()`
+- Replaced deprecated `maven` + `uploadArchives` with `maven-publish` plugin
+- Updated `compileSdk` to 35, `minSdk` to 14 (library) / 21 (example app)
+- Java source/target compatibility updated to 1.8
+- Dropped unused dependencies (`com.android.support:design`, `vector-compat`)
 
+---
 
-### Demonstration video on YouTube
+Versioning
+---
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=S7cSwMArjUQ" target="_blank">
-<img src="http://img.youtube.com/vi/S7cSwMArjUQ/0.jpg" alt="Advanced" width="480" height="360" border="10" />
-</a>
+The version of this library is aligned with the **androidx RecyclerView version** it depends on.
+Current version: **1.4.0** (tracks `androidx.recyclerview:recyclerview:1.4.0`)
 
-NOTE: This library does not contain [Snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html). The above example app uses third-party library. (thx. [Snackbar developed by William Mora ](https://github.com/nispok/snackbar)).
+---
+
+Building
+---
+
+This library is not published to any Maven repository. To use it, build the AAR manually:
+
+```bash
+./gradlew :library:assembleRelease
+```
+
+The output AAR will be located at:
+
+```
+library/build/outputs/aar/library-release.aar
+```
+
+Add the AAR to your project as a local dependency.
 
 ---
 
 Target platforms
 ---
 
-- API level 9 or later  (However, some animations are not supported on Gingerbread.)
+- API level 14 or later
 
-
-Latest version
 ---
-
-- Version 0.7.4  (Aug 1, 2015)
-
-Getting started
----
-
-This library is published on jCenter. Just add these lines to `build.gradle`.
-
-```groovy
-dependencies {
-    compile 'com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.7.4'
-}
-```
 
 Usage
 ---
