@@ -46,6 +46,27 @@ public class RefactoredDefaultItemAnimator extends GeneralItemAnimator {
     }
 
     /**
+     * {@inheritDoc}
+     * <p>
+     * If the payload list is not empty, RefactoredDefaultItemAnimator returns <code>true</code>.
+     * When this is the case:
+     * <ul>
+     * <li>If you override {@link #animateChange(RecyclerView.ViewHolder, RecyclerView.ViewHolder, int, int, int, int)}, both
+     * ViewHolder arguments will be the same instance.
+     * </li>
+     * <li>
+     * If you are not overriding {@link #animateChange(RecyclerView.ViewHolder, RecyclerView.ViewHolder, int, int, int, int)},
+     * then RefactoredDefaultItemAnimator will call {@link #animateMove(RecyclerView.ViewHolder, int, int, int, int)} and
+     * run a move animation instead.
+     * </li>
+     * </ul>
+     */
+    @Override
+    public boolean canReuseUpdatedViewHolder(RecyclerView.ViewHolder viewHolder, java.util.List<Object> payloads) {
+        return !payloads.isEmpty() || super.canReuseUpdatedViewHolder(viewHolder, payloads);
+    }
+
+    /**
      * Item Animation manager for ADD operation  (Same behavior as DefaultItemAnimator class)
      */
     protected static class DefaultItemAddAnimationManager extends ItemAddAnimationManager {
@@ -80,9 +101,9 @@ public class RefactoredDefaultItemAnimator extends GeneralItemAnimator {
 
         @Override
         public boolean addPendingAnimation(RecyclerView.ViewHolder item) {
-            endAnimation(item);
+            resetAnimation(item);
 
-            ViewCompat.setAlpha(item.itemView, 0);
+            item.itemView.setAlpha(0);
 
             enqueuePendingAnimationInfo(new AddAnimationInfo(item));
 
@@ -127,7 +148,7 @@ public class RefactoredDefaultItemAnimator extends GeneralItemAnimator {
 
         @Override
         public boolean addPendingAnimation(RecyclerView.ViewHolder holder) {
-            endAnimation(holder);
+            resetAnimation(holder);
 
             enqueuePendingAnimationInfo(new RemoveAnimationInfo(holder));
             return true;
@@ -170,17 +191,17 @@ public class RefactoredDefaultItemAnimator extends GeneralItemAnimator {
         @Override
         protected void onAnimationEndedSuccessfully(ChangeAnimationInfo info, RecyclerView.ViewHolder item) {
             final View view = item.itemView;
-            ViewCompat.setAlpha(view, 1);
-            ViewCompat.setTranslationX(view, 0);
-            ViewCompat.setTranslationY(view, 0);
+            view.setAlpha(1);
+            view.setTranslationX(0);
+            view.setTranslationY(0);
         }
 
         @Override
         protected void onAnimationEndedBeforeStarted(ChangeAnimationInfo info, RecyclerView.ViewHolder item) {
             final View view = item.itemView;
-            ViewCompat.setAlpha(view, 1);
-            ViewCompat.setTranslationX(view, 0);
-            ViewCompat.setTranslationY(view, 0);
+            view.setAlpha(1);
+            view.setTranslationX(0);
+            view.setTranslationY(0);
         }
 
         @Override
@@ -189,26 +210,26 @@ public class RefactoredDefaultItemAnimator extends GeneralItemAnimator {
 
         @Override
         public boolean addPendingAnimation(RecyclerView.ViewHolder oldHolder, RecyclerView.ViewHolder newHolder, int fromX, int fromY, int toX, int toY) {
-            final float prevTranslationX = ViewCompat.getTranslationX(oldHolder.itemView);
-            final float prevTranslationY = ViewCompat.getTranslationY(oldHolder.itemView);
-            final float prevAlpha = ViewCompat.getAlpha(oldHolder.itemView);
+            final float prevTranslationX = oldHolder.itemView.getTranslationX();
+            final float prevTranslationY = oldHolder.itemView.getTranslationY();
+            final float prevAlpha = oldHolder.itemView.getAlpha();
 
-            endAnimation(oldHolder);
+            resetAnimation(oldHolder);
 
             final int deltaX = (int) (toX - fromX - prevTranslationX);
             final int deltaY = (int) (toY - fromY - prevTranslationY);
 
             // recover prev translation state after ending animation
-            ViewCompat.setTranslationX(oldHolder.itemView, prevTranslationX);
-            ViewCompat.setTranslationY(oldHolder.itemView, prevTranslationY);
-            ViewCompat.setAlpha(oldHolder.itemView, prevAlpha);
+            oldHolder.itemView.setTranslationX(prevTranslationX);
+            oldHolder.itemView.setTranslationY(prevTranslationY);
+            oldHolder.itemView.setAlpha(prevAlpha);
 
-            if (newHolder != null && newHolder.itemView != null) {
+            if (newHolder != null) {
                 // carry over translation values
-                endAnimation(newHolder);
-                ViewCompat.setTranslationX(newHolder.itemView, -deltaX);
-                ViewCompat.setTranslationY(newHolder.itemView, -deltaY);
-                ViewCompat.setAlpha(newHolder.itemView, 0);
+                resetAnimation(newHolder);
+                newHolder.itemView.setTranslationX(-deltaX);
+                newHolder.itemView.setTranslationY(-deltaY);
+                newHolder.itemView.setAlpha(0);
             }
 
             enqueuePendingAnimationInfo(new ChangeAnimationInfo(oldHolder, newHolder, fromX, fromY, toX, toY));

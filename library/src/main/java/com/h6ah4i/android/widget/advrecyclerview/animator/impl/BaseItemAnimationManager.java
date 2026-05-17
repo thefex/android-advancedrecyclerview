@@ -20,6 +20,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 import androidx.core.view.ViewPropertyAnimatorListener;
 import androidx.recyclerview.widget.RecyclerView;
+import android.animation.TimeInterpolator;
+import android.animation.ValueAnimator;
 import android.view.View;
 
 import com.h6ah4i.android.widget.advrecyclerview.animator.BaseItemAnimator;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseItemAnimationManager<T extends ItemAnimationInfo> {
+    private static TimeInterpolator sDefaultInterpolator;
     protected BaseItemAnimator mItemAnimator;
     protected List<T> mPending;
     protected List<List<T>> mDeferredReadySets;
@@ -154,6 +157,14 @@ public abstract class BaseItemAnimationManager<T extends ItemAnimationInfo> {
 
     protected void endAnimation(RecyclerView.ViewHolder holder) {
         mItemAnimator.endAnimation(holder);
+    }
+
+    protected void resetAnimation(RecyclerView.ViewHolder holder) {
+        if (sDefaultInterpolator == null) {
+            sDefaultInterpolator = new ValueAnimator().getInterpolator();
+        }
+        holder.itemView.animate().setInterpolator(sDefaultInterpolator);
+        endAnimation(holder);
     }
 
     protected void dispatchFinishedWhenDone() {

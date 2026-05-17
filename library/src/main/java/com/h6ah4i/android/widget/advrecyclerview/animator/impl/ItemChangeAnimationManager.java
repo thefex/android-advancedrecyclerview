@@ -33,7 +33,7 @@ public abstract class ItemChangeAnimationManager extends BaseItemAnimationManage
         if (debugLogEnabled()) {
             Log.d(TAG, "dispatchChangeStarting(" + item + ")");
         }
-        mItemAnimator.dispatchAnimationStarted(item);
+        mItemAnimator.dispatchChangeStarting(item, (item == info.oldHolder));
     }
 
     @Override
@@ -41,7 +41,7 @@ public abstract class ItemChangeAnimationManager extends BaseItemAnimationManage
         if (debugLogEnabled()) {
             Log.d(TAG, "dispatchChangeFinished(" + item + ")");
         }
-        mItemAnimator.dispatchAnimationFinished(item);
+        mItemAnimator.dispatchChangeFinished(item, (item == info.oldHolder));
     }
 
     @Override
