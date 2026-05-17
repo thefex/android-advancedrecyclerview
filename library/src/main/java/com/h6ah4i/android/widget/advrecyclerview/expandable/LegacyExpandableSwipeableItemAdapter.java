@@ -16,7 +16,7 @@
 
 package com.h6ah4i.android.widget.advrecyclerview.expandable;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 public interface LegacyExpandableSwipeableItemAdapter<GVH extends RecyclerView.ViewHolder, CVH extends RecyclerView.ViewHolder>
         extends BaseExpandableSwipeableItemAdapter<GVH, CVH> {
@@ -61,7 +61,7 @@ public interface LegacyExpandableSwipeableItemAdapter<GVH extends RecyclerView.V
     int onSwipeChildItem(CVH holder, int groupPosition, int childPosition, int result);
 
     /**
-     * <p>Called after {@link #onSwipeGroupItem(android.support.v7.widget.RecyclerView.ViewHolder, int, int)} method.</p>
+     * <p>Called after {@link #onSwipeGroupItem(androidx.recyclerview.widget.RecyclerView.ViewHolder, int, int)} method.</p>
      * <p>You can update data set and call notifyDataXXX() methods inside of this method.</p>
      *
      * @param holder        The ViewHolder which is associated to the swiped item.
@@ -80,7 +80,7 @@ public interface LegacyExpandableSwipeableItemAdapter<GVH extends RecyclerView.V
 
 
     /**
-     * <p>Called after {@link #onSwipeChildItem(android.support.v7.widget.RecyclerView.ViewHolder, int, int, int)} method.</p>
+     * <p>Called after {@link #onSwipeChildItem(androidx.recyclerview.widget.RecyclerView.ViewHolder, int, int, int)} method.</p>
      * <p>You can update data set and call notifyDataXXX() methods inside of this method.</p>
      *
      * @param holder        The ViewHolder which is associated to the swiped item.

@@ -16,7 +16,7 @@
 
 package com.h6ah4i.android.example.advrecyclerview.demo_e_add_remove;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

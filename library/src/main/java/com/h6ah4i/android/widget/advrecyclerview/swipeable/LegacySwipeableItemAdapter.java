@@ -16,7 +16,7 @@
 
 package com.h6ah4i.android.widget.advrecyclerview.swipeable;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.h6ah4i.android.widget.advrecyclerview.swipeable.annotation.SwipeableItemAfterReactions;
 import com.h6ah4i.android.widget.advrecyclerview.swipeable.annotation.SwipeableItemResults;
@@ -52,7 +52,7 @@ public interface LegacySwipeableItemAdapter<T extends RecyclerView.ViewHolder> e
     int onSwipeItem(T holder, int position, int result);
 
     /**
-     * <p>Called after {@link #onSwipeItem(android.support.v7.widget.RecyclerView.ViewHolder, int, int)} method.</p>
+     * <p>Called after {@link #onSwipeItem(androidx.recyclerview.widget.RecyclerView.ViewHolder, int, int)} method.</p>
      * <p>You can update the data set and call notifyDataXXX() methods inside of this method.</p>
      *
      * @param holder   The ViewHolder which is associated to the swiped item.

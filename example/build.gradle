@@ -48,10 +48,10 @@ if (loadSigningConfigFromPropertiesFile(
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':library')
-    compile 'com.android.support:design:23.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':library')
+    implementation 'com.google.android.material:material:1.13.0'
 
     // NOTE: vector-compat is available on API level 14 or later
-    compile 'com.wnafee:vector-compat:1.0.5'
+    implementation 'com.wnafee:vector-compat:1.0.5'
 }

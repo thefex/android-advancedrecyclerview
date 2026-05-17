@@ -20,11 +20,11 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -38,7 +38,7 @@ import com.h6ah4i.android.widget.advrecyclerview.utils.CustomRecyclerViewUtils;
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils;
 
 /**
- * Provides item swipe operation for {@link android.support.v7.widget.RecyclerView}
+ * Provides item swipe operation for {@link androidx.recyclerview.widget.RecyclerView}
  */
 @SuppressWarnings("PointlessBitwiseExpression")
 public class RecyclerViewSwipeManager implements SwipeableItemConstants {
@@ -155,12 +155,12 @@ public class RecyclerViewSwipeManager implements SwipeableItemConstants {
     }
 
     /**
-     * <p>Attaches {@link android.support.v7.widget.RecyclerView} instance.</p>
-     * <p>Before calling this method, the target {@link android.support.v7.widget.RecyclerView} must set
+     * <p>Attaches {@link androidx.recyclerview.widget.RecyclerView} instance.</p>
+     * <p>Before calling this method, the target {@link androidx.recyclerview.widget.RecyclerView} must set
      * the wrapped adapter instance which is returned by the
-     * {@link #createWrappedAdapter(android.support.v7.widget.RecyclerView.Adapter)} method.</p>
+     * {@link #createWrappedAdapter(androidx.recyclerview.widget.RecyclerView.Adapter)} method.</p>
      *
-     * @param rv The {@link android.support.v7.widget.RecyclerView} instance
+     * @param rv The {@link androidx.recyclerview.widget.RecyclerView} instance
      */
     public void attachRecyclerView(@NonNull RecyclerView rv) {
         if (rv == null) {
@@ -202,7 +202,7 @@ public class RecyclerViewSwipeManager implements SwipeableItemConstants {
     }
 
     /**
-     * <p>Detach the {@link android.support.v7.widget.RecyclerView} instance and release internal field references.</p>
+     * <p>Detach the {@link androidx.recyclerview.widget.RecyclerView} instance and release internal field references.</p>
      * <p>This method should be called in order to avoid memory leaks.</p>
      */
     public void release() {
