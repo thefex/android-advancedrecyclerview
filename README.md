@@ -5,7 +5,7 @@ Advanced RecyclerView
 >
 > This is a maintained fork of [h6ah4i/android-advancedrecyclerview](https://github.com/h6ah4i/android-advancedrecyclerview).
 > **This fork is not published to Maven** and is solely intended to be consumed as an Android library
-> in [.NET Android (Xamarin.Android) bindings](https://learn.microsoft.com/en-us/previous-versions/xamarin/android/platform/binding-java-library/) projects.
+> in [Xamarin.Bindings.AdvancedRecyclerView](https://github.com/thefex/Xamarin.Bindings.AdvancedRecyclerView) (.NET Android / Xamarin.Android bindings).
 > If you need a Maven-published artifact, refer to the original repository.
 
 ---
