@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 // Declare these properties in project's extension
@@ -38,74 +38,74 @@ task androidJavadocs(type: Javadoc) {
 }
 
 task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-    classifier = 'javadoc'
+    archiveClassifier.set('javadoc')
     from androidJavadocs.destinationDir
 }
 
 task androidSourcesJar(type: Jar) {
-    classifier = 'sources'
+    archiveClassifier.set('sources')
     from android.sourceSets.main.java.srcDirs
 }
 
 afterEvaluate {
-    androidJavadocs.classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    androidJavadocs.classpath += project.android.libraryVariants.toList().first().javaCompile.classpath
-}
+    androidJavadocs.classpath += project.files(android.bootClasspath)
+    androidJavadocs.classpath += project.android.libraryVariants.toList().first().javaCompileProvider.get().classpath
 
-signing {
-    // load 'keyId', 'password' and 'secretKeyRingFile'
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = dataProps.POM_GROUP_ID
+                artifactId = dataProps.POM_ARTIFACT_ID
+                version = dataProps.VERSION_NAME
+
+                artifact androidSourcesJar
+                artifact androidJavadocsJar
+
+                pom {
+                    licenses {
+                        license {
+                            name = dataProps.POM_APACHE_V2_LICENCE_NAME
+                            url = dataProps.POM_APACHE_V2_LICENCE_URL
+                            distribution = dataProps.POM_APACHE_V2_LICENCE_DIST
+                        }
+                    }
+                    scm {
+                        url = dataProps.POM_SCM_URL
+                        connection = dataProps.POM_SCM_CONNECTION
+                        developerConnection = dataProps.POM_SCM_DEVELOPER_CONNECTION
+                    }
+                    developers {
+                        developer {
+                            id = dataProps.POM_DEVELOPER_ID
+                            name = dataProps.POM_DEVELOPER_NAME
+                        }
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                url = "file://${repoDir}"
+            }
+        }
+    }
+
     def propsFile = project.file(project.mavenPublishSigningSetting)
-
     if (propsFile.exists()) {
         def props = new Properties()
         props.load(propsFile.newDataInputStream())
 
-        if (props.keyId != null &&
-            props.password != null &&
-            props.secretKeyRingFile != null) {
-            project.ext.keyId = props.keyId
-            project.ext.password  = props.password
-            project.ext.secretKeyRingFile = props.secretKeyRingFile
+        if (props.keyId != null && props.password != null && props.secretKeyRingFile != null) {
+            project.ext['signing.keyId'] = props.keyId
+            project.ext['signing.password'] = props.password
+            project.ext['signing.secretKeyRingFile'] = props.secretKeyRingFile
         }
     }
 
-    required { gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
-}
-
-uploadArchives {
-    repositories.mavenDeployer {
-        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-        repository(url: "file://${repoDir}")
-
-        pom.groupId = dataProps.POM_GROUP_ID
-        pom.artifactId = dataProps.POM_ARTIFACT_ID
-        pom.version = dataProps.VERSION_NAME
-        pom.project {
-            licenses {
-                license {
-                    name dataProps.POM_APACHE_V2_LICENCE_NAME
-                    url dataProps.POM_APACHE_V2_LICENCE_URL
-                    distribution dataProps.POM_APACHE_V2_LICENCE_DIST
-                }
-            }
-            scm {
-                url dataProps.POM_SCM_URL
-                connection dataProps.POM_SCM_CONNECTION
-                developerConnection dataProps.POM_SCM_DEVELOPER_CONNECTION
-            }
-            developers {
-                developer {
-                    id dataProps.POM_DEVELOPER_ID
-                    name dataProps.POM_DEVELOPER_NAME
-                }
-            }
-        }
+    signing {
+        required { gradle.taskGraph.hasTask("publishReleasePublicationToMavenRepository") }
+        sign publishing.publications.release
     }
-}
-
-artifacts {
-    archives androidSourcesJar
-    archives androidJavadocsJar
 }
